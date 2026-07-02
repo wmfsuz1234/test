@@ -1,0 +1,298 @@
+제공해주신 내용을 바탕으로 깔끔하고 현대적인 디자인의 소개 HTML 페이지를 제작했습니다.
+
+전체적인 색상은 신뢰감과 지역공동체의 따뜻함을 줄 수 있는 초록색(Forest Green)과 **부드러운 그레이** 톤을 사용하였으며, 모바일과 PC 어디서나 잘 보이도록 **반응형 디자인**과 크고 명확한 타이틀 구조를 적용했습니다.
+
+아래의 코드를 `.html` 파일(예: `gangbuk_village.html`)로 저장하신 후 브라우저로 열어서 확인해 보세요.
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사단법인 강북구지역공동체네트워크 강북마을</title>
+    <style>
+        /* 기본 스타일 리셋 및 폰트 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        /* 헤더 영역 */
+        header {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            word-break: keep-all;
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* 메인 컨텐츠 영역 */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* 섹션 공통 스타일 */
+        section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        h2 {
+            font-size: 1.6rem;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8f5e9;
+            display: flex;
+            align-items: center;
+        }
+        h2::before {
+            content: "•";
+            margin-right: 8px;
+            color: #4caf50;
+        }
+
+        /* 설립목적 & 비전 */
+        .intro-text {
+            font-size: 1.1rem;
+            word-break: keep-all;
+            color: #444;
+        }
+        .highlight-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1b5e20;
+            text-align: center;
+        }
+
+        /* 연혁 스타일 (타임라인 형태) */
+        .timeline {
+            list-style: none;
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: #c8e6c9;
+        }
+        .timeline li {
+            margin-bottom: 15px;
+            position: relative;
+            word-break: keep-all;
+        }
+        .timeline li::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4caf50;
+        }
+        .timeline .year {
+            font-weight: 700;
+            color: #2e7d32;
+            margin-right: 10px;
+            display: inline-block;
+            min-width: 75px;
+        }
+
+        /* 목표 및 사업계획 카드 스타일 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            background: #fcfcfc;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #a5d6a7;
+        }
+        .card h3 {
+            font-size: 1.15rem;
+            color: #1b5e20;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .card ul li {
+            position: relative;
+            padding-left: 15px;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        .card ul li::before {
+            content: "-";
+            position: absolute;
+            left: 0;
+            color: #81c784;
+            font-weight: bold;
+        }
+
+        /* 푸터 영역 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0e0e0;
+            background: #fff;
+        }
+
+        /* 반응형 대응 */
+        @media (max-width: 768px) {
+            header { padding: 40px 15px; }
+            header h1 { font-size: 1.7rem; }
+            section { padding: 25px 20px; }
+            .timeline .year { display: block; margin-bottom: 3px; }
+            .timeline li::before { top: 12px; }
+        }
+    </style>
+    <!-- 구글 웹폰트 추가 (Noto Sans KR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 헤더 -->
+    <header>
+        <h1>사단법인 강북구지역공동체네트워크 강북마을</h1>
+        <p>참여와 자치, 협동과 연대로 이루는 지역공동체</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- 설립 목적 -->
+        <section>
+            <h2>설립목적</h2>
+            <p class="intro-text">
+                강북구 주민들이 자발적이고 책임 있는 참여를 바탕으로 주민자치 역량을 강화하고, 
+                협동과 연대를 통해 지역의 혁신과 변화를 이루는 지역공동체 실현을 목적으로 설립되었습니다.
+            </p>
+        </section>
+
+        <!-- 비전 -->
+        <section>
+            <h2>강북마을 비전</h2>
+            <div class="highlight-box">
+                "순환과 공생, 주민자치를 위한 지역공동체 네트워크 구축"
+            </div>
+        </section>
+
+        <!-- 강북마을 2030 목표 -->
+        <section>
+            <h2>강북마을 2030 목표</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>1. 기반조성</h3>
+                    <p>지속가능한 강북마을을 위한 기반조성</p>
+                </div>
+                <div class="card">
+                    <h3>2. 플랫폼 구축</h3>
+                    <p>주민자치력 향상을 위한 주민자치플랫폼 구축</p>
+                </div>
+                <div class="card">
+                    <h3>3. 연대와 협력</h3>
+                    <p>지역문제 해결을 위한 연대와 협력 활성화</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2026년 사업계획 -->
+        <section>
+            <h2>2026년 사업계획</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>1. 지속가능한 기반조성</h3>
+                    <ul>
+                        <li>회원 소통 및 재정 안정화</li>
+                        <li>강북형 돌봄공동체 상상</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>2. 주민자치플랫폼 구축</h3>
+                    <ul>
+                        <li>민주시민 강좌</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>3. 연대와 협력 활성화</h3>
+                    <ul>
+                        <li>지역 연대 활성화</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 연혁 -->
+        <section>
+            <h2>연혁</h2>
+            <ul class="timeline">
+                <li><span class="year">2023년</span>가치밥상, 시민학교, 주민자치 대화마당, 돌봄포럼, 강북마을 지역활동 공모전, 민간거버넌스협의회, 강북정책연대 운영, 강북기후위기대응실천행동 참여, 강북구직접정치주민대회 연대, 서울풀뿌리시민사회네트워크 참여</li>
+                <li><span class="year">2022년</span>6.1지방선거대응 지역연대활동, 주민자치력 향상을 위한 주민자치 플랫폼 구축, 동별·의제별 네트워크 활성화, 대선·지선 대응 특별위원회, 지역사회 현안 대응</li>
+                <li><span class="year">2021년</span>강북마을 2030 비전워크숍, 동조직가 교육, 기후위기대응연대, 주민자치 정책포럼 운영</li>
+                <li><span class="year">2020년</span>강북마을 2030 비전워크숍, 마을정책포럼, 자유시민대학 운영</li>
+                <li><span class="year">2019년</span>강북구건강생태계조성지원사업 운영, 강북구마을자치센터 수탁</li>
+                <li><span class="year">2018년</span>강북구혁신교육지구 마을배움터사업단 운영</li>
+                <li><span class="year">2017년</span>강북구시민협력플랫폼 운영</li>
+                <li><span class="year">2016년 10월</span>사단법인 발족 (10월 8일)</li>
+                <li><span class="year">2014년</span>강북구마을생태계조성지원단 운영</li>
+                <li><span class="year">2012년 5월</span>강북구마을모임 창립총회</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>© 사단법인 강북구지역공동체네트워크 강북마을. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
